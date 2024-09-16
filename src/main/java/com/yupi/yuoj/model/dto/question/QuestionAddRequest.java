@@ -38,20 +38,11 @@ public class QuestionAddRequest implements Serializable {
      */
     private String answer;
 
-    /**
-     * 题目提交数
-     */
-    private Integer submitNum;
-
-    /**
-     * 题目通过数
-     */
-    private Integer acceptedNum;
 
     /**
      * 判题用例（json 数组）
      */
-    private JudgeCase judgeCase;
+    private List<JudgeCase> judgeCase;
 
     /**
      * 判题配置（json 对象）

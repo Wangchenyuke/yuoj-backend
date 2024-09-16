@@ -1,14 +1,13 @@
 package com.yupi.yuoj.model.vo;
 
 
-import cn.hutool.db.handler.StringHandler;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
+
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+
+
 import com.yupi.yuoj.model.dto.question.JudgeConfig;
 import com.yupi.yuoj.model.entity.Question;
 import lombok.Data;
@@ -65,7 +64,7 @@ public class QuestionVO implements Serializable {
     /**
      * 判题配置（json 对象）
      */
-    private List<String> judgeConfig;
+    private JudgeConfig judgeConfig;
 
     /**
      * 点赞数
@@ -118,7 +117,7 @@ public class QuestionVO implements Serializable {
             question.setTags(JSONUtil.toJsonStr(tagList));
         }
 
-        List<String> judgeConfigVO = questionVO.getJudgeConfig();
+        JudgeConfig judgeConfigVO = questionVO.getJudgeConfig();
         if (judgeConfigVO != null) {
             question.setJudgeConfig(JSONUtil.toJsonStr(judgeConfigVO));
         }
@@ -140,7 +139,7 @@ public class QuestionVO implements Serializable {
         BeanUtils.copyProperties(question, questionVO);
         //将question对象的 json字符串 转换成对象 封装成封装类
         questionVO.setTags(JSONUtil.toList(question.getTags(),String.class));
-        questionVO.setJudgeConfig(JSONUtil.toList(question.getJudgeConfig(), String.class));
+        questionVO.setJudgeConfig(JSONUtil.toBean(question.getJudgeConfig(), JudgeConfig.class));
         return questionVO;
     }
 }
