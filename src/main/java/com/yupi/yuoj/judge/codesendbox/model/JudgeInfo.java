@@ -1,4 +1,4 @@
-package com.yupi.yuoj.model.dto.questionsubmit;
+package com.yupi.yuoj.judge.codesendbox.model;
 
 import lombok.Data;
 
@@ -15,9 +15,9 @@ public class JudgeInfo {
     /**
      * 程序执行内存（KB）
      */
-    private String memory;
+    private Long memory;
     /**
      * 程序执行时间 （ms）
      */
-    private String time;
+    private Long time;
 }
